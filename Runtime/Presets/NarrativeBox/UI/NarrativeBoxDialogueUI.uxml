@@ -1,0 +1,18 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/RootStyle.uss?fileID=7433441132597879392&amp;guid=5e8122682ad90cb46b4e7055d3898a61&amp;type=3#RootStyle"/>
+    <Style src="project://database/Assets/DialogueSystem/Presets/NarrativeBox/UI/NarrativeBoxDialogueUIStyle.uss?fileID=7433441132597879392&amp;guid=c0b923108e6bc67408c8c3f3d9c64e20&amp;type=3#NarrativeBoxDialogueUIStyle"/>
+    <engine:VisualElement name="Container" picking-mode="Ignore" style="flex-grow: 1; transition-property: opacity, translate; transition-duration: 0.3s, 0.3s; justify-content: flex-end;">
+        <engine:VisualElement name="ClickArea" style="position: absolute; width: 1000px; align-self: center; height: 80%; max-width: 90%;"/>
+        <engine:VisualElement name="DialogueBox" class="dialogue">
+            <engine:Label text="Speaker Name" name="SpeakerNameLabel" class="dialogue__speaker-name"/>
+            <engine:Label text="alMDSLASMDLASMDASKDmsakdmAKSdk dadkAdkaS DAKDsaJdnasDJ ASJdANSdjANSdjA SNdjASn jdnAJds jaSd j" name="DialogueTextLabel" class="dialogue__text"/>
+            <engine:Label text="&gt;&gt;" name="NextIndicator" class="dialogue__next-indicator"/>
+            <engine:VisualElement name="ChoicesContainer" class="dialogue__choices-container">
+                <engine:Button text="Choice 1" name="" class="btn dialogue__choice"/>
+                <engine:Button text="Choice 2" class="btn dialogue__choice"/>
+                <engine:Button text="Super long answer haha yes lorem ipsum dolor sit amet" class="btn dialogue__choice"/>
+            </engine:VisualElement>
+            <engine:VisualElement name="Portrait" class="dialogue__portrait" style="background-position-y: bottom 0; background-image: url(&quot;project://database/Assets/DialogueSystem/Presets/NarrativeBox/Portraits/Portrait_Astonishment.png?fileID=-1817956837&amp;guid=3026072e6c0b8ed479af90711c519c91&amp;type=3#Portrait_Astonishment&quot;);"/>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

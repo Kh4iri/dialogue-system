@@ -1,0 +1,78 @@
+.dialogue {
+    --background: var(--btn-background);
+    --foreground: #000000;
+    --speaker-background: #cccccc;
+    --speaker-foreground: #000000;
+    --spacing: 16px;
+    --choices-gap: 6px;
+
+    width: 820px;
+    max-width: 95%;
+    margin-bottom: 12px;
+    align-self: center;
+    background-color: var(--background);
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+    border-color: var(--btn-border-color);
+}
+
+.dialogue__speaker-name {
+    margin: 0 0 var(--spacing) 0;
+    padding: 6px 16px;
+    color: var(--speaker-foreground);
+    background-color: var(--speaker-background);
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+    font-size: var(--text-lg);
+    white-space: normal;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+}
+
+.dialogue__text {
+    min-height: 22px;
+    margin: 0 0 36px 0;
+    padding: 0 24px;
+    white-space: normal;
+    font-size: var(--text-base);
+    color: var(--foreground);
+    -unity-text-align: upper-center;
+    -unity-font-style: bold;
+}
+
+.dialogue__next-indicator {
+    position: absolute;
+    right: 4px;
+    bottom: 2px;
+    color: var(--foreground);
+    opacity: 0.3;
+    -unity-font-style: bold;
+}
+
+.dialogue__choices-container {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    min-width: 270px;
+    max-width: 45%;
+    margin-bottom: 10px;
+}
+
+.dialogue__choice {
+    margin-top: var(--choices-gap);
+    font-size: var(--text-base);
+    color: var(--foreground);
+    white-space: normal;
+    -unity-text-align: middle-left;
+}
+
+.dialogue__portrait {
+    position: absolute;
+    left: 15px;
+    bottom: 100%;
+    width: 250px;
+    height: 400px;
+    margin-bottom: var(--border-width);
+    border-radius: var(--border-radius);
+    background-position-y: bottom 0; /* TODO: Check this, this doesnt work? */
+    -unity-background-scale-mode: scale-to-fit;
+}

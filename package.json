@@ -1,0 +1,22 @@
+{
+  "name": "com.khairi.dialoguesystem",
+  "displayName": "Dialogue System",
+  "version": "0.1.0",
+  "unity": "6000.3",
+  "description": "A dialogue system based on Unity's Graph Toolkit.",
+  "dependencies": {
+    "com.unity.graphtoolkit": "0.4.0-exp.2",
+    "com.unity.serialization": "3.1.5"
+  },
+  "keywords": [
+    "dialogue",
+    "graph",
+    "node",
+    "system",
+    "editor"
+  ],
+  "author": {
+    "name": "Khairi",
+    "url": "https://github.com/kh4iri"
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Khairi.DialogueSystem.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cb658386ee9e35a49aeae26f5dd25a28",
+        "GUID:d1e08c06f8f9473888c892637c83c913",
+        "GUID:70ef9a24f4cfc4aec911c1414e3f90ad",
+        "GUID:466c189f864894e40a6254a14c270d7f",
+        "GUID:9b443c5ad3b147e29fd53a32b878ca5c",
+        "GUID:8c9ef94c4e33aae44bff179e64581112",
+        "GUID:2765e68924a08a94ea0ea66b31c0168f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
