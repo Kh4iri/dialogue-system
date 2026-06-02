@@ -38,8 +38,6 @@ namespace Khairi.DialogueSystem
 
         public override Task ExecuteAsync(DialogueBehaviour ctx, CancellationToken ct = default)
         {
-            ct.ThrowIfCancellationRequested();
-
             var view = ctx.DialogueViewPreset;
             switch (FontType)
             {

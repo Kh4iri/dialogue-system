@@ -1,11 +1,24 @@
 .dialogue {
-    --background: var(--btn-background);
+    --text-base: 18px;
+    --text-lg: 22px;
+    --background: rgb(239, 239, 239);
     --foreground: #000000;
     --speaker-background: #cccccc;
     --speaker-foreground: #000000;
-    --spacing: 16px;
+    --text-margin: 16px 0 36px 0;
     --choices-gap: 6px;
+    --border-width: 4px;
+    --border-color: #000000;
+    --border-radius: 8px;
+    --border-radius-sm: 4px;
 
+    /* Button */
+    --btn-padding: 7px 14px;
+    --btn-background: var(--background);
+    --btn-foreground: var(--foreground);
+    --btn-font-size: var(--text-base);
+    --btn-border-color: var(--border-color);
+    
     width: 820px;
     max-width: 95%;
     margin-bottom: 12px;
@@ -17,7 +30,7 @@
 }
 
 .dialogue__speaker-name {
-    margin: 0 0 var(--spacing) 0;
+    margin: 0;
     padding: 6px 16px;
     color: var(--speaker-foreground);
     background-color: var(--speaker-background);
@@ -30,7 +43,7 @@
 
 .dialogue__text {
     min-height: 22px;
-    margin: 0 0 36px 0;
+    margin: var(--text-margin);
     padding: 0 24px;
     white-space: normal;
     font-size: var(--text-base);
@@ -58,11 +71,32 @@
 }
 
 .dialogue__choice {
-    margin-top: var(--choices-gap);
-    font-size: var(--text-base);
-    color: var(--foreground);
+    padding: var(--btn-padding);
+    margin: var(--choices-gap) 0 0 0;
+    font-size: var(--btn-font-size);
+    color: var(--btn-foreground);
+    background-color: var(--btn-background);
+    border-color: var(--btn-border-color);
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+    transition-property: scale;
+    transition-duration: 0.1s;
     white-space: normal;
+    -unity-font-style: bold;
     -unity-text-align: middle-left;
+}
+
+.dialogue__choice:focus,
+.dialogue__choice:hover {
+    border-color: white;
+}
+
+.dialogue__choice:active {
+    scale: 0.95 0.95;
+}
+
+.dialogue__choice:disabled {
+    opacity: 0.6;
 }
 
 .dialogue__portrait {

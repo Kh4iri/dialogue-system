@@ -71,6 +71,25 @@ namespace Khairi.DialogueSystem.Editor
             return runtimeNode;
         }
 
+        public override void LinkRuntimeNode(DialogueRuntimeNode runtimeNode, IReadOnlyDictionary<IDialogueNode, DialogueRuntimeNode> runtimeNodes)
+        {
+            if (runtimeNode is not WriteChoiceDialogueRuntimeNode choiceRuntimeNode)
+                throw new InvalidOperationException($"Expected runtime node of type does not match editor node type.");
+
+            GetNodeOptionByName(ChoicesCountOptionName).TryGetValue(out int choicesCount);
+
+
+            for (int choiceIndex = 0; choiceIndex < choicesCount; choiceIndex++)
+            {
+                var nextNode = GetOutputPortByName($"{ResultOutputPrefix}{choiceIndex}").firstConnectedPort?.GetNode();
+                if (nextNode is not IDialogueNode nextChoiceNode)
+                    continue;
+
+                if (runtimeNodes.TryGetValue(nextChoiceNode, out var nextRuntimeNode))
+                    choiceRuntimeNode.Choices[choiceIndex].NextNode = nextRuntimeNode;
+            }
+        }
+
         public void CheckErrors(GraphLogger logger)
         {
             var choicesCountOption = GetNodeOptionByName(ChoicesCountOptionName);
@@ -90,18 +109,6 @@ namespace Khairi.DialogueSystem.Editor
                     logger.LogWarning($"The output port for choice {i} is connected to multiple nodes. Only the first connection will be used at runtime.", this);
                 }
             }
-        }
-
-        public int GetChoicesCount()
-        {
-            GetNodeOptionByName(ChoicesCountOptionName).TryGetValue(out int choicesCount);
-            return choicesCount;
-        }
-
-        public INode GetNextNodeForChoice(int choiceIndex)
-        {
-            var outputPort = GetOutputPortByName($"{ResultOutputPrefix}{choiceIndex}");
-            return outputPort.firstConnectedPort?.GetNode();
         }
     }
 }

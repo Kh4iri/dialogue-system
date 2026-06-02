@@ -19,11 +19,10 @@ namespace Khairi.DialogueSystem
 
         public override Task ExecuteAsync(DialogueBehaviour ctx, CancellationToken ct = default)
         {
-            ct.ThrowIfCancellationRequested();
-
             var key = Key.GetValue(ctx);
             var value = Value.GetValue(ctx);
             ctx.SetRuntimeVariable(key, value);
+            
             return Task.CompletedTask;
         }
     }

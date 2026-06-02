@@ -81,53 +81,12 @@ namespace Khairi.DialogueSystem.Editor
                 runtimeAsset.EntryNode = runtimeNodes[entryDialogueNode];
             }
 
-            // Link the runtime nodes together based on the connections in the editor graph
+            // Link the runtime nodes together
             foreach (var kvp in runtimeNodes)
             {
                 var node = kvp.Key;
                 var runtimeNode = kvp.Value;
-
-                switch (node)
-                {
-                    // Basic linear flow nodes just have a single "next" connection
-                    case LinearDialogueNode linearNode when runtimeNode is LinearDialogueRuntimeNode linearRuntimeNode:
-                    {
-                        if (linearNode.GetNextNode() is IDialogueNode nextNode && runtimeNodes.ContainsKey(nextNode))
-                            linearRuntimeNode.NextNode = runtimeNodes[nextNode];
-
-                        break;
-                    }
-
-                    // Choice nodes have multiple connections based on the number of choices
-                    case WriteChoiceDialogueNode choiceNode when runtimeNode is WriteChoiceDialogueRuntimeNode choiceRuntimeNode:
-                    {
-                        for (int i = 0; i < choiceNode.GetChoicesCount(); i++)
-                        {
-                            if (choiceNode.GetNextNodeForChoice(i) is IDialogueNode nextChoiceNode && runtimeNodes.ContainsKey(nextChoiceNode))
-                                choiceRuntimeNode.Choices[i].NextNode = runtimeNodes[nextChoiceNode];
-                        }
-
-                        break;
-                    }
-                    
-                    // Condition nodes have two connections for true/false outcomes
-                    case ConditionNode conditionNode when runtimeNode is ConditionRuntimeNode conditionRuntimeNode:
-                    {
-                        // Set TrueNextNode
-                        if (conditionNode.GetOutputPortByName(ConditionNode.TrueOutputName).firstConnectedPort?.GetNode() is IDialogueNode trueNextNode && runtimeNodes.ContainsKey(trueNextNode))
-                            conditionRuntimeNode.TrueNextNode = runtimeNodes[trueNextNode];
-
-                        // Set FalseNextNode
-                        if (conditionNode.GetOutputPortByName(ConditionNode.FalseOutputName).firstConnectedPort?.GetNode() is IDialogueNode falseNextNode && runtimeNodes.ContainsKey(falseNextNode))
-                            conditionRuntimeNode.FalseNextNode = runtimeNodes[falseNextNode];
-                        
-                        break;
-                    }
-                    
-                    default:
-                        Debug.LogWarning($"Unsupported dialogue node type for runtime conversion: {node.GetType().Name}");
-                        break;
-                }
+                node.LinkRuntimeNode(runtimeNode, runtimeNodes);
             }
 
             // Get all variable nodes and convert them to runtime variable nodes, then add them to the runtime asset

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.TextCore.Text;
 
 namespace Khairi.DialogueSystem

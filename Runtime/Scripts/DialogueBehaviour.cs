@@ -133,7 +133,6 @@ namespace Khairi.DialogueSystem
                 return;
             }
 
-
             _cts?.Cancel();
             _cts?.Dispose();
             _cts = CancellationTokenSource.CreateLinkedTokenSource(ct, destroyCancellationToken);
@@ -148,6 +147,8 @@ namespace Khairi.DialogueSystem
             {
                 while (currentNode != null)
                 {
+                    _cts.Token.ThrowIfCancellationRequested();
+
                     switch (currentNode)
                     {
                         case LinearDialogueRuntimeNode linearNode:
@@ -157,18 +158,11 @@ namespace Khairi.DialogueSystem
                             break;
                         }
 
-                        case WriteChoiceDialogueRuntimeNode choiceNode:
+                        case ConditionalDialogueRuntimeNode conditionalNode:
                         {
-                            await choiceNode.ExecuteAsync(this, _cts.Token);
-                            var selectedChoice = choiceNode.SelectedChoice;
-                            currentNode = selectedChoice.NextNode;
-                            break;
-                        }
-
-                        case ConditionRuntimeNode conditionNode:
-                        {
-                            await conditionNode.ExecuteAsync(this, _cts.Token);
-                            currentNode = conditionNode.LastEvaluatedResult ? conditionNode.TrueNextNode : conditionNode.FalseNextNode;
+                            await conditionalNode.ExecuteAsync(this, _cts.Token);
+                            _cts.Token.ThrowIfCancellationRequested();
+                            currentNode = await conditionalNode.GetNextNodeAsync(this, _cts.Token);
                             break;
                         }
 

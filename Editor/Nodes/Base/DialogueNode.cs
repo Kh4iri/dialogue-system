@@ -1,5 +1,5 @@
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 using Unity.GraphToolkit.Editor;
 
 namespace Khairi.DialogueSystem.Editor
@@ -11,6 +11,11 @@ namespace Khairi.DialogueSystem.Editor
         /// Note: This method is called before other runtime nodes are created and linked together.
         /// </summary>
         public DialogueRuntimeNode CreateRuntimeNode();
+
+        /// <summary>
+        /// Links the created runtime node to any downstream runtime nodes.
+        /// </summary>
+        public void LinkRuntimeNode(DialogueRuntimeNode runtimeNode, IReadOnlyDictionary<IDialogueNode, DialogueRuntimeNode> runtimeNodes);
     }
 
     [Serializable]
@@ -50,5 +55,7 @@ namespace Khairi.DialogueSystem.Editor
         }
 
         public abstract DialogueRuntimeNode CreateRuntimeNode();
+
+        public virtual void LinkRuntimeNode(DialogueRuntimeNode runtimeNode, IReadOnlyDictionary<IDialogueNode, DialogueRuntimeNode> runtimeNodes) {}
     }
 }

@@ -19,8 +19,6 @@ namespace Khairi.DialogueSystem
 
         public override Task ExecuteAsync(DialogueBehaviour ctx, CancellationToken ct = default)
         {
-            ct.ThrowIfCancellationRequested();
-
             var gameObject = GameObject.GetValue(ctx);
             if (gameObject != null)
             {

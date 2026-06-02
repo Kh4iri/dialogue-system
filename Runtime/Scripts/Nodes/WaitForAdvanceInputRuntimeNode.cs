@@ -13,7 +13,6 @@ namespace Khairi.DialogueSystem
     {
         public override async Task ExecuteAsync(DialogueBehaviour ctx, CancellationToken ct = default)
         {
-            ct.ThrowIfCancellationRequested();
             await ctx.DialogueViewPreset.WaitForAdvanceInput(ct);
         }
     }

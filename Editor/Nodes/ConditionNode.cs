@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Unity.GraphToolkit.Editor;
-using UnityEngine;
 
 namespace Khairi.DialogueSystem.Editor
 {
@@ -36,6 +35,24 @@ namespace Khairi.DialogueSystem.Editor
             var predicatePort = GetInputPortByName(PredicateInputName).ToInputPort<bool>();
             var runtimeNode = new ConditionRuntimeNode(predicatePort);
             return runtimeNode;
+        }
+
+        public override void LinkRuntimeNode(DialogueRuntimeNode runtimeNode, IReadOnlyDictionary<IDialogueNode, DialogueRuntimeNode> runtimeNodes)
+        {
+            if (runtimeNode is not ConditionRuntimeNode conditionRuntimeNode)
+                throw new InvalidOperationException($"Expected runtime node of type does not match editor node type.");
+
+            if (GetOutputPortByName(TrueOutputName).firstConnectedPort?.GetNode() is IDialogueNode trueNextNode &&
+                runtimeNodes.TryGetValue(trueNextNode, out var trueRuntimeNode))
+            {
+                conditionRuntimeNode.TrueNextNode = trueRuntimeNode;
+            }
+
+            if (GetOutputPortByName(FalseOutputName).firstConnectedPort?.GetNode() is IDialogueNode falseNextNode &&
+                runtimeNodes.TryGetValue(falseNextNode, out var falseRuntimeNode))
+            {
+                conditionRuntimeNode.FalseNextNode = falseRuntimeNode;
+            }
         }
 
         public virtual void CheckErrors(GraphLogger logger)

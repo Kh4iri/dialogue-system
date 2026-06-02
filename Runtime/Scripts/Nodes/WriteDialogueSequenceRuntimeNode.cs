@@ -19,8 +19,6 @@ namespace Khairi.DialogueSystem
 
         public override async Task ExecuteAsync(DialogueBehaviour ctx, CancellationToken ct = default)
         {
-            ct.ThrowIfCancellationRequested();
-
             // Reset dialogue
             var view = ctx.DialogueViewPreset;
             view.SetSpeakerName(SpeakerName.GetValue(ctx));

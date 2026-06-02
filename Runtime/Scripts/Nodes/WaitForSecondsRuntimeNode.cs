@@ -35,8 +35,6 @@ namespace Khairi.DialogueSystem
 
         public override async Task ExecuteAsync(DialogueBehaviour ctx, CancellationToken ct = default)
         {
-            ct.ThrowIfCancellationRequested();
-
             switch (WaitMode)
             {
                 case Mode.GameTime:
@@ -48,10 +46,8 @@ namespace Khairi.DialogueSystem
             }
         }
 
-        public static async Task WaitForSecondsRealtimeAsync(float seconds, CancellationToken ct = default)
+        private static async Task WaitForSecondsRealtimeAsync(float seconds, CancellationToken ct = default)
         {
-            ct.ThrowIfCancellationRequested();
-
             float startTime = Time.realtimeSinceStartup;
             while (Time.realtimeSinceStartup - startTime < seconds)
             {
