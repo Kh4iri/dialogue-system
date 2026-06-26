@@ -23,7 +23,7 @@
     {
       "displayName": "Dialogue System Sample",
       "description": "A sample scene demonstrating the Dialogue System in action.",
-      "path": "Samples/ExampleDialogues"
+      "path": "Samples~/ExampleDialogues"
     }
   ]
 }
