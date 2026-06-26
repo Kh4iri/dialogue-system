@@ -29,7 +29,6 @@ namespace Khairi.DialogueSystem.Editor
             // Base dialogue ports
             ctx.AddInputPort<string>(WriteDialogueNode.SpeakerInputName).Build();
             ctx.AddInputPort<string>(WriteDialogueNode.DialogueTextInputName).Build();
-            ctx.AddInputPort<Sprite>(WriteDialogueNode.PortraitInputName).Build();
             ctx.AddInputPort<AudioSource>(WriteDialogueNode.VoiceSourceInputName).Build();
             ctx.AddInputPort<AudioClip>(WriteDialogueNode.VoiceClipInputName).Build();
 
@@ -64,10 +63,9 @@ namespace Khairi.DialogueSystem.Editor
 
             var speakerPort = GetInputPortByName(WriteDialogueNode.SpeakerInputName).ToInputPort<string>();
             var dialoguePort = GetInputPortByName(WriteDialogueNode.DialogueTextInputName).ToInputPort<string>();
-            var portraitPort = GetInputPortByName(WriteDialogueNode.PortraitInputName).ToInputPort<Sprite>();
             var voiceSourcePort = GetInputPortByName(WriteDialogueNode.VoiceSourceInputName).ToInputPort<AudioSource>();
             var voiceClipPort = GetInputPortByName(WriteDialogueNode.VoiceClipInputName).ToInputPort<AudioClip>();
-            var runtimeNode = new WriteChoiceDialogueRuntimeNode(speakerPort, dialoguePort, portraitPort, voiceSourcePort, voiceClipPort, choices);
+            var runtimeNode = new WriteChoiceDialogueRuntimeNode(speakerPort, dialoguePort, voiceSourcePort, voiceClipPort, choices);
             return runtimeNode;
         }
 

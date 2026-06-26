@@ -734,7 +734,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.49999988, g: 0.69444436, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.47181666, g: 0.56267047, b: 0.70440245, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Khairi.DialogueSystem.DialogueBehaviour
   _dialogueView: {fileID: 11400000, guid: 575fded2b67971846a60d4394fecb512, type: 2}
-  _dialogueGraph: {fileID: 2841676755933307327, guid: f920cdf4c134a784a870f73c26cc89c3, type: 3}
+  _dialogueGraph: {fileID: 2841676755933307327, guid: e6f2e1211c6cc484b84bb77339bbf293, type: 3}
   _defaultVoiceSource: {fileID: 601682768}
   _startingVariables:
     _serializedList:

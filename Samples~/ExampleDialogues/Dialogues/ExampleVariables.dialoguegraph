@@ -458,13 +458,11 @@ MonoBehaviour:
           m_KeyList:
           - Speaker
           - Dialogue
-          - Portrait
           - VoiceSource
           - VoiceClip
           m_ValueList:
           - rid: 4070757130234757129
           - rid: 4070757130234757130
-          - rid: 4070757130234757131
           - rid: 4070757130234757132
           - rid: 4070757130234757133
         m_InputPortInfos:
@@ -522,10 +520,6 @@ MonoBehaviour:
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
         m_Value: You can use variables within the dialogue!
-    - rid: 4070757130234757131
-      type: {class: 'Constant`1[[UnityEngine.Sprite, UnityEngine.CoreModule]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: {fileID: 0}
     - rid: 4070757130234757132
       type: {class: 'Constant`1[[UnityEngine.AudioSource, UnityEngine.AudioModule]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:

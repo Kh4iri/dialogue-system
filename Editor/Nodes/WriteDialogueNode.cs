@@ -8,7 +8,6 @@ namespace Khairi.DialogueSystem.Editor
     {
         public const string SpeakerInputName = "Speaker";
         public const string DialogueTextInputName = "Dialogue";
-        public const string PortraitInputName = "Portrait";
         public const string VoiceSourceInputName = "VoiceSource";
         public const string VoiceClipInputName = "VoiceClip";
 
@@ -18,7 +17,6 @@ namespace Khairi.DialogueSystem.Editor
 
             ctx.AddInputPort<string>(SpeakerInputName).Build();
             ctx.AddInputPort<string>(DialogueTextInputName).Build();
-            ctx.AddInputPort<Sprite>(PortraitInputName).Build();
             ctx.AddInputPort<AudioSource>(VoiceSourceInputName).Build();
             ctx.AddInputPort<AudioClip>(VoiceClipInputName).Build();
         }
@@ -27,11 +25,10 @@ namespace Khairi.DialogueSystem.Editor
         {
             var speakerPort = GetInputPortByName(SpeakerInputName).ToInputPort<string>();
             var dialoguePort = GetInputPortByName(DialogueTextInputName).ToInputPort<string>();
-            var portraitPort = GetInputPortByName(PortraitInputName).ToInputPort<Sprite>();
             var voiceSourcePort = GetInputPortByName(VoiceSourceInputName).ToInputPort<AudioSource>();
             var voiceClipPort = GetInputPortByName(VoiceClipInputName).ToInputPort<AudioClip>();
 
-            var runtimeNode = new WriteDialogueRuntimeNode(speakerPort, dialoguePort, portraitPort, voiceSourcePort, voiceClipPort);
+            var runtimeNode = new WriteDialogueRuntimeNode(speakerPort, dialoguePort, voiceSourcePort, voiceClipPort);
             return runtimeNode;
         }
     }

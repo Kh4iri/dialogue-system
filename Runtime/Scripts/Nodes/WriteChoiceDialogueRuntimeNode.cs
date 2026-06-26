@@ -11,16 +11,14 @@ namespace Khairi.DialogueSystem
     {
         [SerializeReference] public InputPort<string> SpeakerName;
         [SerializeReference] public InputPort<string> DialogueText;
-        [SerializeReference] public InputPort<Sprite> Portrait;
         [SerializeReference] public InputPort<AudioSource> VoiceSource;
         [SerializeReference] public InputPort<AudioClip> VoiceClip;
         [SerializeReference] public List<DialogueChoiceData> Choices;
 
-        public WriteChoiceDialogueRuntimeNode(InputPort<string> speakerName, InputPort<string> dialogueText, InputPort<Sprite> portrait, InputPort<AudioSource> voiceSource, InputPort<AudioClip> voiceClip, List<DialogueChoiceData> choices) : base()
+        public WriteChoiceDialogueRuntimeNode(InputPort<string> speakerName, InputPort<string> dialogueText, InputPort<AudioSource> voiceSource, InputPort<AudioClip> voiceClip, List<DialogueChoiceData> choices) : base()
         {
             SpeakerName = speakerName;
             DialogueText = dialogueText;
-            Portrait = portrait;
             VoiceSource = voiceSource;
             VoiceClip = voiceClip;
             Choices = choices;
@@ -32,7 +30,6 @@ namespace Khairi.DialogueSystem
             var view = ctx.DialogueViewPreset;
             view.SetSpeakerName(SpeakerName.GetValue(ctx));
             view.SetDialogueText(string.Empty);
-            view.SetPortrait(Portrait.GetValue(ctx));
             view.ClearChoices();
             
             // Show dialogue view, write dialogue while voice is playing, then show choices
