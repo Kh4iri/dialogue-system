@@ -20,4 +20,4 @@ Tested Unity version: **6000.3.9f1 (6.3 LTS)**
 
 Story-focused layout, featuring large character portraits and stacked choice menus. Built entirely with UI Toolkit and integrated with the Input System.
 
-
+<img width="1337" height="752" alt="narrative-box-preset" src="https://github.com/user-attachments/assets/8d24d75b-845e-4302-a83f-a86b841bd6e9" />
